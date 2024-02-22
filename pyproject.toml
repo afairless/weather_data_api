@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "weather-temperature-data"
+version = "0.1.0"
+description = "Retrieve current and historical temperature data in the United States"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "weather_temperature_data"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.31.0"
+polars = "^0.20.10"
+geopy = "^2.4.1"
+fastapi = "^0.109.2"
+uvicorn = "^0.27.1"
+pytest-mock = "^3.12.0"
+
+[tool.poetry.group.dev.dependencies]
+requests = "^2.31.0"
+polars = "^0.20.10"
+geopy = "^2.4.1"
+fastapi = "^0.109.2"
+pytest = "^8.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,28 @@
+ 
+notebook with ISD data
+https://github.com/awslabs/amazon-asdi/blob/main/examples/noaa-isd/notebooks/NOAA-ISD-Python-Athena.ipynb
+
+
+https://www.ncei.noaa.gov/products/land-based-station/integrated-surface-database
+
+
+This provides the needed data by year, but in individual files, which will need to be automatically downloaded:
+https://www.ncei.noaa.gov/pub/data/noaa/isd-lite/
+
+
+https://www.ncei.noaa.gov/data/global-hourly/archive/isd/
+
+
+
+FEDERAL CLIMATE COMPLEX DATA DOCUMENTATION FOR INTEGRATED SURFACE DATA (ISD)
+January 12, 2018
+page 5
+1) For data files obtained via FTP or from NCEI’s archive, the filename convention uses the USAF identifier and the WBAN identifier
+in the filename—eg, 723150-03812-year (such as 2006).
+2) As additional data sources are integrated into ISD, the 2 station number fields will be used as an 11-digit ID field, with the first 2
+digits representing the WMO block number (if applicable).
+
+
+
+https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso
+

@@ -1,0 +1,15 @@
+https://www.ncei.noaa.gov/access/homr/reports
+
+Miscellaneous Station Reports
+WBAN, Weather-Bureau-Army-Navy
+
+WBAN numbers were the first major attempt at a coordinated station numbering scheme among several weather reporting authorities. Original participants in the WBAN number plans were the United States Weather Bureau, Air Force, Navy, and Army, and the Canadian Department of Transportation. Selected German and Korean stations in close cooperation with the US Weather Services are also included. This list is updated monthly.
+
+    wbanmasterlist.zip / Layout
+    Last updated 4 weeks ago.
+
+    This is the official WBAN master station list. WBAN is a five-digit station identifier used at NCEI for digital data storage and general station identification purposes. It is an acronym, invented in the 1950's, which stands for Weather-Bureau-Army-Navy. WBAN identifiers are officially assigned and managed at NCEI.
+    wbanmasterlist.psv.zip
+    Last updated 4 weeks ago. This is a pipe-delimited version of the same report.
+
+

@@ -1,0 +1,9 @@
+mamba create --name data_processing06 polars pandas numpy scipy matplotlib requests pyarrow dask pyspark sqlalchemy psycopg2 pytest pika mock aiohttp
+
+conda activate data_processing06
+
+mamba install -c conda-forge pandera
+pip install great_expectations
+pip install sqlalchemy_utils
+
+mamba env export > environment.yml

@@ -1,0 +1,3 @@
+mamba create --name async_download04 aiohttp requests beautifulsoup4 aiofiles polars
+conda activate async_download04
+mamba env export > environment.yml
