@@ -43,8 +43,9 @@ Input:
 }
 ```
 
-```code
 Output:
+
+```code
 {
   "current_temperature_celsius": 11.666666666666668,
   "current_station": "KPBZ",
