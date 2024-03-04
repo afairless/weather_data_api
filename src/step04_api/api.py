@@ -4,11 +4,28 @@ import datetime
 import requests
 import polars as pl
 import geopy.distance as gd
+import logging
 from time import sleep
 from pathlib import Path
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import Callable
+
+
+# this is a basic logging configuration
+# a more performant option would be to log the API responses from the socket
+#   using a separate Python process, as mentioned here:
+#       https://docs.python.org/3/howto/logging-cookbook.html#deploying-web-applications-using-gunicorn-and-uwsgi
+
+log_filepath = Path.home() / 'Documents' / 'weather_api.log'
+logging.basicConfig(
+    filename=log_filepath, 
+    encoding='utf-8', 
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
 class Coordinates(BaseModel):
@@ -351,6 +368,8 @@ def request_current_weather(coordinates: Coordinates) -> CurrentWeather:
     input_coordinates = (coordinates.latitude, coordinates.longitude)
     station_response, _ = retry_request(
         retry_n, retry_delay, request_station_information, input_coordinates)
+    logger.info(station_response.url)
+    logger.info(station_response.text)
 
     if station_response.ok:
         try:
@@ -380,6 +399,8 @@ def request_current_weather(coordinates: Coordinates) -> CurrentWeather:
 
     forecast_response, _ = retry_request(
         retry_n, retry_delay, requests.get, forecast_url)
+    logger.info(forecast_response.url)
+    logger.info(forecast_response.text)
 
     if forecast_response.ok:
 
@@ -463,6 +484,9 @@ def get_historical_and_current_temperatures(
     The ISD-Lite data set has been filtered to include only weather stations 
         that were active in the prior year and have a long history of
         continual observations
+        
+    NOTE:  It would probably make sense to refactor the file paths to global
+        variables, so they are not assigned repeatedly with each function call
     """
 
 

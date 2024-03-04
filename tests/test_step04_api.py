@@ -461,6 +461,7 @@ def test_request_current_weather_02(mocker: pytest_mock.MockFixture):
     # SET UP MOCK FOR FIRST API CALL, WHICH REQUESTS STATION INFORMATION
     ##################################################
 
+    station_url = 'https://api.weather.gov/points/000,000'
     forecast_url = 'https://api.weather.gov/gridpoints/KILX/000,000/forecast'
     station_json = {
         'properties': {
@@ -472,6 +473,9 @@ def test_request_current_weather_02(mocker: pytest_mock.MockFixture):
     @dataclass
     class StationResponse:
         ok: bool = True
+        url: str = station_url
+        def text(self):
+            return str(station_json)
         def json(self):
             return station_json 
 
@@ -486,11 +490,16 @@ def test_request_current_weather_02(mocker: pytest_mock.MockFixture):
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
     ##################################################
 
+    forecast_dict = {'properties': {'periods': [{'temperature': 23}]}}
+
     @dataclass
     class ForecastResponse:
         ok: bool = True
+        url: str = forecast_url
+        def text(self):
+            return str(forecast_dict)
         def json(self):
-            return {'properties': {'periods': [{'temperature': 23}]}}
+            return forecast_dict
 
     def mock_request_forecast(dummy):
         forecast_response = ForecastResponse()
@@ -533,6 +542,9 @@ def test_request_current_weather_03(mocker: pytest_mock.MockFixture):
     @dataclass
     class StationResponse:
         ok: bool = True
+        url: str = ''
+        def text(self):
+            return ''
         def json(self):
             return {}
 
@@ -547,11 +559,16 @@ def test_request_current_weather_03(mocker: pytest_mock.MockFixture):
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
     ##################################################
 
+    forecast_dict = {'properties': {'periods': [{'temperature': 23}]}}
+
     @dataclass
     class ForecastResponse:
         ok: bool = True
+        url: str = ''
+        def text(self):
+            return str(forecast_dict)
         def json(self):
-            return {'properties': {'periods': [{'temperature': 23}]}}
+            return forecast_dict
 
     def mock_request_forecast(dummy):
         forecast_response = ForecastResponse()
@@ -594,6 +611,9 @@ def test_request_current_weather_04(mocker: pytest_mock.MockFixture):
     @dataclass
     class StationResponse:
         ok: bool = False
+        url: str = ''
+        def text(self):
+            return str(station_json)
         def json(self):
             return station_json 
 
@@ -609,11 +629,16 @@ def test_request_current_weather_04(mocker: pytest_mock.MockFixture):
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
     ##################################################
 
+    forecast_dict = {'properties': {'periods': [{'temperature': 23}]}}
+
     @dataclass
     class ForecastResponse:
         ok: bool = True
+        url: str = ''
+        def text(self):
+            return str(forecast_dict)
         def json(self):
-            return {'properties': {'periods': [{'temperature': 23}]}}
+            return forecast_dict
 
     def mock_request_forecast(dummy):
         forecast_response = ForecastResponse()
@@ -654,6 +679,9 @@ def test_request_current_weather_05(mocker: pytest_mock.MockFixture):
     @dataclass
     class StationResponse:
         ok: bool = False
+        url: str = ''
+        def text(self):
+            return ''
         def json(self):
             return {'type': ''}
 
@@ -669,11 +697,16 @@ def test_request_current_weather_05(mocker: pytest_mock.MockFixture):
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
     ##################################################
 
+    forecast_dict = {'properties': {'periods': [{'temperature': 23}]}}
+
     @dataclass
     class ForecastResponse:
         ok: bool = True
+        url: str = ''
+        def text(self):
+            return str(forecast_dict)
         def json(self):
-            return {'properties': {'periods': [{'temperature': 23}]}}
+            return forecast_dict
 
     def mock_request_forecast(dummy):
         forecast_response = ForecastResponse()
@@ -711,6 +744,7 @@ def test_request_current_weather_06(mocker: pytest_mock.MockFixture):
     # SET UP MOCK FOR FIRST API CALL, WHICH REQUESTS STATION INFORMATION
     ##################################################
 
+    station_url = 'https://api.weather.gov/points/000,000'
     forecast_url = 'https://api.weather.gov/gridpoints/XXX/000,000/forecast'
     station_json = {
         'properties': {
@@ -722,6 +756,9 @@ def test_request_current_weather_06(mocker: pytest_mock.MockFixture):
     @dataclass
     class StationResponse:
         ok: bool = True
+        url: str = station_url
+        def text(self):
+            return str(station_json)
         def json(self):
             return station_json 
 
@@ -739,6 +776,9 @@ def test_request_current_weather_06(mocker: pytest_mock.MockFixture):
     @dataclass
     class ForecastResponse:
         ok: bool = True
+        url: str = forecast_url
+        def text(self):
+            return str(station_json)
         def json(self):
             return {'properties': {'periods': [{}]}}
 
@@ -778,6 +818,7 @@ def test_request_current_weather_07(mocker: pytest_mock.MockFixture):
     # SET UP MOCK FOR FIRST API CALL, WHICH REQUESTS STATION INFORMATION
     ##################################################
 
+    station_url = 'https://api.weather.gov/points/000,000'
     forecast_url = 'https://api.weather.gov/gridpoints/XXX/000,000/forecast'
     station_json = {
         'properties': {
@@ -789,6 +830,9 @@ def test_request_current_weather_07(mocker: pytest_mock.MockFixture):
     @dataclass
     class StationResponse:
         ok: bool = True
+        url: str = station_url
+        def text(self):
+            return str(station_json)
         def json(self):
             return station_json 
 
@@ -803,11 +847,16 @@ def test_request_current_weather_07(mocker: pytest_mock.MockFixture):
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
     ##################################################
 
+    forecast_dict = {'properties': {'periods': [{'temperature': 23}]}}
+
     @dataclass
     class ForecastResponse:
         ok: bool = True
+        url: str = forecast_url
+        def text(self):
+            return str(forecast_dict)
         def json(self):
-            return {'properties': {'periods': [{'temperature': 23}]}}
+            return forecast_dict
 
     def mock_request_forecast(dummy):
         forecast_response = ForecastResponse()
@@ -846,6 +895,7 @@ def test_request_current_weather_08(mocker: pytest_mock.MockFixture):
     # SET UP MOCK FOR FIRST API CALL, WHICH REQUESTS STATION INFORMATION
     ##################################################
 
+    station_url = 'https://api.weather.gov/points/000,000'
     forecast_url = 'https://api.weather.gov/gridpoints/XXX/000,000/forecast'
     station_json = {
         'properties': {
@@ -857,6 +907,9 @@ def test_request_current_weather_08(mocker: pytest_mock.MockFixture):
     @dataclass
     class StationResponse:
         ok: bool = True
+        url: str = station_url
+        def text(self):
+            return str(station_json)
         def json(self):
             return station_json 
 
@@ -872,11 +925,16 @@ def test_request_current_weather_08(mocker: pytest_mock.MockFixture):
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
     ##################################################
 
+    forecast_dict = {'properties': {'periods': [{'temperature': 23}]}}
+
     @dataclass
     class ForecastResponse:
         ok: bool = False
+        url: str = forecast_url
+        def text(self):
+            return str(forecast_dict)
         def json(self):
-            return {'properties': {'periods': [{'temperature': 23}]}}
+            return forecast_dict
 
     def mock_request_forecast(dummy):
         forecast_response = ForecastResponse()
@@ -1025,6 +1083,7 @@ def test_get_historical_and_current_temperatures_02(
     # SET UP MOCK FOR FIRST API CALL, WHICH REQUESTS STATION INFORMATION
     ##################################################
 
+    station_url = 'https://api.weather.gov/points/000,000'
     forecast_url = 'https://api.weather.gov/gridpoints/XXX/000,000/forecast'
     station_json = {
         'properties': {
@@ -1036,6 +1095,9 @@ def test_get_historical_and_current_temperatures_02(
     @dataclass
     class StationResponse:
         ok: bool = True
+        url: str = station_url
+        def text(self):
+            return str(station_json)
         def json(self):
             return station_json 
 
@@ -1051,11 +1113,16 @@ def test_get_historical_and_current_temperatures_02(
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
     ##################################################
 
+    forecast_dict = {'properties': {'periods': [{'temperature': 23}]}}
+
     @dataclass
     class ForecastResponse:
         ok: bool = True
+        url: str = forecast_url
+        def text(self):
+            return str(forecast_dict)
         def json(self):
-            return {'properties': {'periods': [{'temperature': 23}]}}
+            return forecast_dict
 
     def mock_request_forecast(dummy):
         forecast_response = ForecastResponse()
@@ -1161,6 +1228,9 @@ def test_get_historical_and_current_temperatures_03(
     @dataclass
     class StationResponse:
         ok: bool = True
+        url: str = ''
+        def text(self):
+            return ''
         def json(self):
             return {}
 
@@ -1176,11 +1246,16 @@ def test_get_historical_and_current_temperatures_03(
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
     ##################################################
 
+    forecast_dict = {'properties': {'periods': [{'temperature': 23}]}}
+
     @dataclass
     class ForecastResponse:
         ok: bool = True
+        url: str = ''
+        def text(self):
+            return str(forecast_dict)
         def json(self):
-            return {'properties': {'periods': [{'temperature': 23}]}}
+            return forecast_dict
 
     def mock_request_forecast(dummy):
         forecast_response = ForecastResponse()
@@ -1290,6 +1365,9 @@ def test_get_historical_and_current_temperatures_04(
     @dataclass
     class StationResponse:
         ok: bool = False
+        url: str = ''
+        def text(self):
+            return str(station_json)
         def json(self):
             return station_json 
 
@@ -1305,11 +1383,16 @@ def test_get_historical_and_current_temperatures_04(
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
     ##################################################
 
+    forecast_dict = {'properties': {'periods': [{'temperature': 23}]}}
+
     @dataclass
     class ForecastResponse:
         ok: bool = True
+        url: str = ''
+        def text(self):
+            return str(forecast_dict)
         def json(self):
-            return {'properties': {'periods': [{'temperature': 23}]}}
+            return forecast_dict
 
     def mock_request_forecast(dummy):
         forecast_response = ForecastResponse()
