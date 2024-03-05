@@ -6,7 +6,7 @@ import polars as pl
 import geopy.distance as gd
 from dataclasses import dataclass
 
-from src.step04_api.api import (
+from src.step05_api.api import (
     convert_fahrenheit_to_celsius,
     identify_closest_coordinates,
     filter_df_by_id_and_date,
@@ -412,7 +412,7 @@ def test_request_station_information_01():
 
 @pytest.mark.skip(reason='used only to verify mock operation')
 def test_request_station_information_02(mocker: pytest_mock.MockFixture):
-    mocker.patch('src.step04_api.api.requests.get')
+    mocker.patch('src.step05_api.api.requests.get')
     coordinates = (40, -88)
     response = request_station_information(coordinates)
     assert response.ok
@@ -484,7 +484,7 @@ def test_request_current_weather_02(mocker: pytest_mock.MockFixture):
         return station_response
 
     station_mock = mocker.Mock(wraps=mock_request_station_information)
-    mocker.patch('src.step04_api.api.request_station_information', station_mock)
+    mocker.patch('src.step05_api.api.request_station_information', station_mock)
 
 
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
@@ -506,7 +506,7 @@ def test_request_current_weather_02(mocker: pytest_mock.MockFixture):
         return forecast_response 
 
     forecast_mock = mocker.Mock(wraps=mock_request_forecast)
-    mocker.patch('src.step04_api.api.requests.get', forecast_mock)
+    mocker.patch('src.step05_api.api.requests.get', forecast_mock)
 
 
     # RUN TEST
@@ -553,7 +553,7 @@ def test_request_current_weather_03(mocker: pytest_mock.MockFixture):
         return station_response
 
     station_mock = mocker.Mock(wraps=mock_request_station_information)
-    mocker.patch('src.step04_api.api.request_station_information', station_mock)
+    mocker.patch('src.step05_api.api.request_station_information', station_mock)
 
 
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
@@ -575,7 +575,7 @@ def test_request_current_weather_03(mocker: pytest_mock.MockFixture):
         return forecast_response 
 
     forecast_mock = mocker.Mock(wraps=mock_request_forecast)
-    mocker.patch('src.step04_api.api.requests.get', forecast_mock)
+    mocker.patch('src.step05_api.api.requests.get', forecast_mock)
 
 
     # RUN TEST
@@ -622,8 +622,8 @@ def test_request_current_weather_04(mocker: pytest_mock.MockFixture):
         return station_response
 
     station_mock = mocker.Mock(wraps=mock_request_station_information)
-    mocker.patch('src.step04_api.api.request_station_information', station_mock)
-    mocker.patch('src.step04_api.api.sleep', mock_sleep)
+    mocker.patch('src.step05_api.api.request_station_information', station_mock)
+    mocker.patch('src.step05_api.api.sleep', mock_sleep)
 
 
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
@@ -645,7 +645,7 @@ def test_request_current_weather_04(mocker: pytest_mock.MockFixture):
         return forecast_response 
 
     forecast_mock = mocker.Mock(wraps=mock_request_forecast)
-    mocker.patch('src.step04_api.api.requests.get', forecast_mock)
+    mocker.patch('src.step05_api.api.requests.get', forecast_mock)
 
 
     # RUN TEST
@@ -690,8 +690,8 @@ def test_request_current_weather_05(mocker: pytest_mock.MockFixture):
         return station_response
 
     station_mock = mocker.Mock(wraps=mock_request_station_information)
-    mocker.patch('src.step04_api.api.request_station_information', station_mock)
-    mocker.patch('src.step04_api.api.sleep', mock_sleep)
+    mocker.patch('src.step05_api.api.request_station_information', station_mock)
+    mocker.patch('src.step05_api.api.sleep', mock_sleep)
 
 
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
@@ -713,7 +713,7 @@ def test_request_current_weather_05(mocker: pytest_mock.MockFixture):
         return forecast_response 
 
     forecast_mock = mocker.Mock(wraps=mock_request_forecast)
-    mocker.patch('src.step04_api.api.requests.get', forecast_mock)
+    mocker.patch('src.step05_api.api.requests.get', forecast_mock)
 
 
     # RUN TEST
@@ -767,7 +767,7 @@ def test_request_current_weather_06(mocker: pytest_mock.MockFixture):
         return station_response
 
     station_mock = mocker.Mock(wraps=mock_request_station_information)
-    mocker.patch('src.step04_api.api.request_station_information', station_mock)
+    mocker.patch('src.step05_api.api.request_station_information', station_mock)
 
 
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
@@ -787,7 +787,7 @@ def test_request_current_weather_06(mocker: pytest_mock.MockFixture):
         return forecast_response 
 
     forecast_mock = mocker.Mock(wraps=mock_request_forecast)
-    mocker.patch('src.step04_api.api.requests.get', forecast_mock)
+    mocker.patch('src.step05_api.api.requests.get', forecast_mock)
 
 
     # RUN TEST
@@ -841,7 +841,7 @@ def test_request_current_weather_07(mocker: pytest_mock.MockFixture):
         return station_response
 
     station_mock = mocker.Mock(wraps=mock_request_station_information)
-    mocker.patch('src.step04_api.api.request_station_information', station_mock)
+    mocker.patch('src.step05_api.api.request_station_information', station_mock)
 
 
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
@@ -863,7 +863,7 @@ def test_request_current_weather_07(mocker: pytest_mock.MockFixture):
         return forecast_response 
 
     forecast_mock = mocker.Mock(wraps=mock_request_forecast)
-    mocker.patch('src.step04_api.api.requests.get', forecast_mock)
+    mocker.patch('src.step05_api.api.requests.get', forecast_mock)
 
 
     # RUN TEST
@@ -918,8 +918,8 @@ def test_request_current_weather_08(mocker: pytest_mock.MockFixture):
         return station_response
 
     station_mock = mocker.Mock(wraps=mock_request_station_information)
-    mocker.patch('src.step04_api.api.request_station_information', station_mock)
-    mocker.patch('src.step04_api.api.sleep', mock_sleep)
+    mocker.patch('src.step05_api.api.request_station_information', station_mock)
+    mocker.patch('src.step05_api.api.sleep', mock_sleep)
 
 
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
@@ -941,7 +941,7 @@ def test_request_current_weather_08(mocker: pytest_mock.MockFixture):
         return forecast_response 
 
     forecast_mock = mocker.Mock(wraps=mock_request_forecast)
-    mocker.patch('src.step04_api.api.requests.get', forecast_mock)
+    mocker.patch('src.step05_api.api.requests.get', forecast_mock)
 
 
     # RUN TEST
@@ -1060,7 +1060,7 @@ def test_get_historical_and_current_temperatures_02(
             'lon': [-88.373001],
             'elev(m)': [213.399994]})
 
-    mocker.patch('src.step04_api.api.get_station_df', mock_get_station_df)
+    mocker.patch('src.step05_api.api.get_station_df', mock_get_station_df)
 
 
     # SET UP MOCK FOR RETRIEVING TABLE OF WEATHER STATION INFORMATION
@@ -1076,7 +1076,7 @@ def test_get_historical_and_current_temperatures_02(
             'temperature': [-15, 0, 25, 100]})
 
     mocker.patch(
-        'src.step04_api.api.get_historical_temperatures', 
+        'src.step05_api.api.get_historical_temperatures', 
         mock_get_historical_temperatures)
 
 
@@ -1106,8 +1106,8 @@ def test_get_historical_and_current_temperatures_02(
         return station_response
 
     station_mock = mocker.Mock(wraps=mock_request_station_information)
-    mocker.patch('src.step04_api.api.request_station_information', station_mock)
-    mocker.patch('src.step04_api.api.sleep', mock_sleep)
+    mocker.patch('src.step05_api.api.request_station_information', station_mock)
+    mocker.patch('src.step05_api.api.sleep', mock_sleep)
 
 
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
@@ -1129,7 +1129,7 @@ def test_get_historical_and_current_temperatures_02(
         return forecast_response 
 
     forecast_mock = mocker.Mock(wraps=mock_request_forecast)
-    mocker.patch('src.step04_api.api.requests.get', forecast_mock)
+    mocker.patch('src.step05_api.api.requests.get', forecast_mock)
 
 
     # RUN TEST
@@ -1202,7 +1202,7 @@ def test_get_historical_and_current_temperatures_03(
             'lon': [-88.373001],
             'elev(m)': [213.399994]})
 
-    mocker.patch('src.step04_api.api.get_station_df', mock_get_station_df)
+    mocker.patch('src.step05_api.api.get_station_df', mock_get_station_df)
 
 
     # SET UP MOCK FOR RETRIEVING TABLE OF WEATHER STATION INFORMATION
@@ -1218,7 +1218,7 @@ def test_get_historical_and_current_temperatures_03(
             'temperature': [-15, 0, 25, 100]})
 
     mocker.patch(
-        'src.step04_api.api.get_historical_temperatures', 
+        'src.step05_api.api.get_historical_temperatures', 
         mock_get_historical_temperatures)
 
 
@@ -1239,8 +1239,8 @@ def test_get_historical_and_current_temperatures_03(
         return station_response
 
     station_mock = mocker.Mock(wraps=mock_request_station_information)
-    mocker.patch('src.step04_api.api.request_station_information', station_mock)
-    mocker.patch('src.step04_api.api.sleep', mock_sleep)
+    mocker.patch('src.step05_api.api.request_station_information', station_mock)
+    mocker.patch('src.step05_api.api.sleep', mock_sleep)
 
 
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
@@ -1262,7 +1262,7 @@ def test_get_historical_and_current_temperatures_03(
         return forecast_response 
 
     forecast_mock = mocker.Mock(wraps=mock_request_forecast)
-    mocker.patch('src.step04_api.api.requests.get', forecast_mock)
+    mocker.patch('src.step05_api.api.requests.get', forecast_mock)
 
 
     # RUN TEST
@@ -1337,7 +1337,7 @@ def test_get_historical_and_current_temperatures_04(
             'lon': [-88.373001],
             'elev(m)': [213.399994]})
 
-    mocker.patch('src.step04_api.api.get_station_df', mock_get_station_df)
+    mocker.patch('src.step05_api.api.get_station_df', mock_get_station_df)
 
 
     # SET UP MOCK FOR RETRIEVING TABLE OF WEATHER STATION INFORMATION
@@ -1353,7 +1353,7 @@ def test_get_historical_and_current_temperatures_04(
             'temperature': [-15, 0, 25, 100]})
 
     mocker.patch(
-        'src.step04_api.api.get_historical_temperatures', 
+        'src.step05_api.api.get_historical_temperatures', 
         mock_get_historical_temperatures)
 
 
@@ -1376,8 +1376,8 @@ def test_get_historical_and_current_temperatures_04(
         return station_response
 
     station_mock = mocker.Mock(wraps=mock_request_station_information)
-    mocker.patch('src.step04_api.api.request_station_information', station_mock)
-    mocker.patch('src.step04_api.api.sleep', mock_sleep)
+    mocker.patch('src.step05_api.api.request_station_information', station_mock)
+    mocker.patch('src.step05_api.api.sleep', mock_sleep)
 
 
     # SET UP MOCK FOR SECOND API CALL, WHICH REQUESTS FORECAST
@@ -1399,7 +1399,7 @@ def test_get_historical_and_current_temperatures_04(
         return forecast_response 
 
     forecast_mock = mocker.Mock(wraps=mock_request_forecast)
-    mocker.patch('src.step04_api.api.requests.get', forecast_mock)
+    mocker.patch('src.step05_api.api.requests.get', forecast_mock)
 
 
     # RUN TEST

@@ -1,10 +1,12 @@
 #! /usr/bin/env python3
 
+import json
 import datetime
 import requests
 import polars as pl
 import geopy.distance as gd
 import logging
+import logging.config
 from time import sleep
 from pathlib import Path
 from fastapi import FastAPI
@@ -17,15 +19,14 @@ from typing import Callable
 #   using a separate Python process, as mentioned here:
 #       https://docs.python.org/3/howto/logging-cookbook.html#deploying-web-applications-using-gunicorn-and-uwsgi
 
-log_filepath = Path.home() / 'Documents' / 'weather_api.log'
-logging.basicConfig(
-    filename=log_filepath, 
-    encoding='utf-8', 
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+log_config_filename = 'log_config.json'
+log_config_filepath = (
+    Path.cwd() / 'src' / 'step05_api' / log_config_filename)
+with open(log_config_filepath) as json_file:
+    log_configuration = json.load(json_file)
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logging.config.dictConfig(log_configuration)
+logger = logging.getLogger('default')
 
 
 class Coordinates(BaseModel):

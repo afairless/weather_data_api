@@ -114,9 +114,16 @@ Compile, organize, and save data two ways:
 2. Provide a single file that includes all years for all stations  
 
 
-### Step 4:  Run API
+### Step 4:  Set up logging configuration
 
-Directory: ```src/step04_api```
+Directory: ```src/step04_set_up_log_config```
+
+Set up a JSON logging configuration file so that responses from the National Weather Service (NWS) API are logged.
+
+
+### Step 5:  Run API
+
+Directory: ```src/step05_api```
 
 Request current and historical weather information -- temperature, specifically -- from the National Weather Service (NWS) API and the Integrated Surface Data (ISD) Lite data set, respectively, for a given pair of latitude and longitude coordinates
 
@@ -126,9 +133,9 @@ The ISD-Lite data set has been filtered to include only weather stations that we
 
 
 ## Run modules
-### Steps 1 - 3
+### Steps 1 - 4
 
-The modules for Steps 1, 2, and 3 may be run with their respective Anaconda environments as specified in the ```environment.yml``` files in their directories.
+The modules for Steps 1, 2, 3, and 4 may be run with their respective Anaconda environments as specified in the ```environment.yml``` files in their directories.
 
 From within their directories, you can [run these commands](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html), substituting the appropriate names for the all-caps labels:
 
@@ -174,26 +181,36 @@ python process_data_tables.py
 
 ### Step 4
 
-The module for Step 4 may be run with either the Anaconda environment specified in its directory or with Poetry.  Either method must be run from the top-level project directory.
-
-The commands for running Step 4 with Anaconda are:
-
 ```code
-conda env create -f src/step04_api/environment.yml
+conda env create -f environment.yml
 
 conda activate geodata_processing04
 
-uvicorn src.step04_api.api:app
+python set_up_log_configuration.py
 ```
 
-The [commands](https://python-poetry.org/docs/basic-usage/) for running Step 4 with Poetry are:
+### Step 5
+
+The module for Step 5 may be run with either the Anaconda environment specified in its directory or with Poetry.  Either method must be run from the top-level project directory.
+
+The commands for running Step 5 with Anaconda are:
+
+```code
+conda env create -f src/step05_api/environment.yml
+
+conda activate geodata_processing04
+
+uvicorn src.step05_api.api:app
+```
+
+The [commands](https://python-poetry.org/docs/basic-usage/) for running Step 5 with Poetry are:
 
 ```code
 poetry install
 
 poetry shell
 
-poetry run uvicorn src.step04_api.api:app
+poetry run uvicorn src.step05_api.api:app
 ```
 
 For running in both Anaconda and Poetry environments, you can [test the API locally](https://fastapi.tiangolo.com/tutorial/first-steps/) for either current temperature or for current-and-historical temperatures by pointing your browser to:

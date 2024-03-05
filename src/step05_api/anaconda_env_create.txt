@@ -1,0 +1,5 @@
+mamba create --name geodata_processing04 geopy polars numpy scipy matplotlib pyarrow sqlalchemy psycopg2 pytest mock pytest-mock requests fastapi uvicorn python-multipart python-jose passlib  
+
+conda activate geodata_processing04
+
+mamba env export > environment.yml

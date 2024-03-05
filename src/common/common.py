@@ -58,5 +58,3 @@ def get_filepaths_in_directory_by_extension(
         if e.as_posix()[-len(file_extension):] == file_extension]
 
     return filepaths    
-
-
