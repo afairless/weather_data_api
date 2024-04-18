@@ -40,3 +40,10 @@ jobs:
       run: |
         python src/step04_set_up_log_config/set_up_log_configuration.py
         python -m pytest
+    - name: Install poetry
+      run: |
+        pip install poetry
+        poetry install
+    - name: Test with poetry and pytest
+      run: |
+        poetry run python -m pytest
