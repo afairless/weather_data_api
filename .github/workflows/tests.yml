@@ -43,7 +43,7 @@ jobs:
     - name: Install poetry
       run: |
         pip install poetry
-        poetry install
+        poetry install --no-root
     - name: Test with poetry and pytest
       run: |
         poetry run python -m pytest
