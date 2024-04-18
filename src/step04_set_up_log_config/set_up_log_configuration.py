@@ -17,7 +17,10 @@ def main():
     log_config_filename = 'log_config.json'
     log_config_filepath = (
         Path.cwd() / 'src' / 'step05_api' / log_config_filename)
-    log_filepath = Path.home() / 'Documents' / 'weather_api.log'
+
+    log_path = Path.home() / 'Documents'
+    log_path.mkdir(exist_ok=True, parents=True)
+    log_filepath = log_path / 'weather_api.log'
 
     log_configuration = {
         'version': 1,
