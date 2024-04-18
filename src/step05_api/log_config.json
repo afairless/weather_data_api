@@ -17,7 +17,7 @@
       "level": "INFO",
       "class": "logging.FileHandler",
       "formatter": "default",
-      "filename": "/home/username/Documents/weather_api.log",
+      "filename": "/home/gv/Documents/weather_api.log",
       "mode": "a",
       "encoding": "utf-8"
     }
